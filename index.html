@@ -3,261 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Latif Mohammad Khan</title>
+    <title>Latif Mohammad Khan - Java Developer</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --primary-text: #f1f5f9;
-            --secondary-text: #94a3b8;
-            --accent-color: #38bdf8;
-            --highlight-bg: #0c4a6e;
-            --border-color: #334155;
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #38bdf8;
+            --text-p: #f1f5f9;
+            --text-s: #94a3b8;
+            --border: #334155;
         }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-text);
-            margin: 0;
-            padding: 40px 20px;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--primary);
+            color: var(--text-p);
             line-height: 1.6;
+            margin: 0;
+            padding: 20px;
         }
-        .resume-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
+        .container {
+            max-width: 850px;
+            margin: 20px auto;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         header {
             padding: 40px;
-            background: rgba(15, 23, 42, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
         }
-        .header-left h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            letter-spacing: -0.025em;
-        }
-        .header-left p {
-            margin: 5px 0 0;
-            font-size: 1.25rem;
-            color: var(--secondary-text);
-            font-weight: 500;
-        }
-        .contact-info {
-            text-align: right;
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-        }
-        .contact-info div { margin-bottom: 4px; }
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2px;
-            background: var(--border-color);
-        }
-        .main-col, .side-col {
-            background: var(--card-bg);
-            padding: 40px;
-        }
-        section { margin-bottom: 40px; }
-        h2 {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-color);
+        h1 { margin: 0; font-size: 2.2rem; color: var(--accent); letter-spacing: -0.5px; }
+        .subtitle { font-size: 1.2rem; color: var(--text-s); margin: 5px 0 15px; }
+        .contact { font-size: 0.9rem; color: var(--text-s); }
+        .main { padding: 40px; }
+        section { margin-bottom: 35px; }
+        h2 { 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--accent); 
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
         }
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--border-color);
-            margin-left: 15px;
+        .job { margin-bottom: 30px; }
+        .job-header { display: flex; justify-content: space-between; font-weight: bold; }
+        .job-title { color: var(--text-p); font-size: 1.1rem; }
+        .job-date { color: var(--accent); font-size: 0.9rem; }
+        .company { color: var(--text-s); font-style: italic; margin-bottom: 10px; }
+        .project { font-size: 0.95rem; font-weight: 600; color: var(--text-p); margin-top: 10px; }
+        .tech { font-size: 0.85rem; color: var(--accent); margin-bottom: 8px; }
+        .desc { font-size: 0.95rem; color: var(--text-s); margin-bottom: 10px; }
+        ul { padding-left: 18px; margin: 0; }
+        li { margin-bottom: 6px; font-size: 0.95rem; color: var(--text-s); }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-badge { 
+            background: var(--primary); 
+            border: 1px solid var(--border); 
+            padding: 4px 12px; 
+            border-radius: 4px; 
+            font-size: 0.8rem; 
+            color: var(--text-p);
         }
-        .job-entry { margin-bottom: 30px; }
-        .job-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-text);
-        }
-        .job-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            margin-bottom: 10px;
-        }
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 12px 0;
-        }
-        .tag {
-            background: var(--highlight-bg);
-            color: var(--accent-color);
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        ul {
-            padding-left: 18px;
-            color: var(--secondary-text);
-        }
-        li { margin-bottom: 8px; font-size: 0.95rem; }
-        .skill-pill {
-            display: inline-block;
-            background: #334155;
-            color: #f1f5f9;
-            padding: 4px 12px;
-            border-radius: 6px;
-            margin: 0 4px 8px 0;
-            font-size: 0.85rem;
-        }
-        .sidebar-item { margin-bottom: 25px; }
-        .sidebar-item h3 { font-size: 1rem; margin-bottom: 10px; }
-        @media (max-width: 768px) {
-            .grid-layout { grid-template-columns: 1fr; }
-            header { flex-direction: column; text-align: center; }
-            .contact-info { text-align: center; margin-top: 20px; }
-        }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     </style>
 </head>
 <body>
 
-<div class="resume-container">
+<div class="container">
     <header>
-        <div class="header-left">
-            [cite_start]<h1>Latif Mohammad Khan [cite: 4]</h1>
-            [cite_start]<p>Java Developer [cite: 5]</p>
-        </div>
-        <div class="contact-info">
-            [cite_start]<div>Glasgow, United Kingdom [cite: 1]</div>
-            [cite_start]<div>latif.khan@jpmchase.com [cite: 2]</div>
-            [cite_start]<div>+44-7443185442 [cite: 3]</div>
+        <h1>LATIF MOHAMMAD KHAN</h1>
+        <div class="subtitle">Java Developer</div>
+        <div class="contact">
+            GLASGOW, UNITED KINGDOM • +44-7443185442 • LATIF.KHAN@JPMCHASE.COM
         </div>
     </header>
 
-    <div class="grid-layout">
-        <div class="main-col">
-            <section>
-                <h2>Summary</h2>
-                <p style="color: var(--secondary-text);">
-                    [cite_start]Meticulous Software Engineer with 9+ years of experience[cite: 7]. 
-                    [cite_start]Specialized in web technologies and delivering innovative business solutions[cite: 7]. 
-                    [cite_start]Thrives in high-energy, deadline-driven environments[cite: 8].
-                </p>
-            </section>
+    <div class="main">
+        <section>
+            <h2>Professional Summary</h2>
+            <p>Meticulous Software Engineer with 9+ years of experience. In-depth understanding of web technologies with a focus on delivering innovative business solutions. Excels in fast-paced, high-energy, and deadline-driven environments.</p>
+        </section>
 
-            <section>
-                <h2>Experience</h2>
-                
-                <div class="job-entry">
-                    [cite_start]<div class="job-title">Software Engineer II [cite: 10]</div>
-                    <div class="job-meta">
-                        [cite_start]<span>JPMorgan Chase [cite: 11]</span>
-                        [cite_start]<span>Oct 2022 - Present [cite: 14]</span>
-                    </div>
-                    <div class="tech-tags">
-                        [cite_start]<span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Kafka</span><span class="tag">Python</span><span class="tag">Playwright</span> [cite: 13, 21, 22]
-                    </div>
-                    <ul>
-                        [cite_start]<li>Developed core grouping logic for AMS Colt integration[cite: 18].</li>
-                        [cite_start]<li>Built APIs for downstream account onboarding platforms[cite: 19].</li>
-                        [cite_start]<li>Automated test cases using Playwright[cite: 21].</li>
-                        [cite_start]<li>Engineered a release management tool in Python[cite: 22].</li>
-                    </ul>
+        <section>
+            <h2>Employment History</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">SOFTWARE ENGINEER II</span>
+                    <span class="job-date">Oct 2022 - Present</span>
                 </div>
+                <div class="company">JPMorgan Chase, Glasgow</div>
+                <div class="project">Project: AMS Colt Integration</div>
+                <div class="tech">Java, Spring Boot, Kafka</div>
+                <p class="desc">Managed request propagation between COLT System (Transition Manager) and AMS (onboarding/maintenance platform).</p>
+                <ul>
+                    <li>Developed core grouping logic functionality.</li>
+                    <li>Developed APIs in downstream applications.</li>
+                    <li>Enhanced AMS and related components.</li>
+                    <li>Automated test cases using Playwright.</li>
+                    <li>Created a release management tool in Python.</li>
+                </ul>
+            </div>
 
-                <div class="job-entry">
-                    [cite_start]<div class="job-title">Senior Software Engineer [cite: 23]</div>
-                    <div class="job-meta">
-                        [cite_start]<span>Cognizant [cite: 24]</span>
-                        [cite_start]<span>Oct 2021 - Oct 2022 [cite: 27]</span>
-                    </div>
-                    <div class="tech-tags">
-                        [cite_start]<span class="tag">Java/J2EE</span><span class="tag">Spring Boot</span><span class="tag">REST</span><span class="tag">Pega</span> [cite: 26]
-                    </div>
-                    <ul>
-                        [cite_start]<li>Developed credit limit modification APIs for banking agents[cite: 28, 30].</li>
-                        [cite_start]<li>Ensured code quality via Sonar tollgates[cite: 31].</li>
-                        [cite_start]<li>Gathered and scoped requirements from business users[cite: 32].</li>
-                    </ul>
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">SENIOR SOFTWARE ENGINEER</span>
+                    <span class="job-date">Oct 2021 - Oct 2022</span>
                 </div>
+                <div class="company">Cognizant, Hyderabad</div>
+                <div class="project">Project: Underwriting Channel</div>
+                <div class="tech">Java/J2EE, Rest Services, Spring Boot, Pega</div>
+                <p class="desc">Built a system to help bank agents modify customer credit limits.</p>
+                <ul>
+                    <li>Responsible for writing APIs as a Java Developer.</li>
+                    <li>Maintained code quality using Sonar tollgates.</li>
+                    <li>Gathered and scoped requirements from business users.</li>
+                </ul>
+            </div>
 
-                <div class="job-entry">
-                    [cite_start]<div class="job-title">Consultant I [cite: 33]</div>
-                    <div class="job-meta">
-                        [cite_start]<span>Hitachi India [cite: 34]</span>
-                        [cite_start]<span>Jan 2019 - Sep 2021 [cite: 37]</span>
-                    </div>
-                    <div class="tech-tags">
-                        [cite_start]<span class="tag">Microservices</span><span class="tag">AWS</span><span class="tag">Hadoop</span><span class="tag">Spark</span> [cite: 36]
-                    </div>
-                    <ul>
-                        [cite_start]<li>Developed Lineage functionality for Data Science Engineers[cite: 35, 41].</li>
-                        [cite_start]<li>Identified and tagged data within Hadoop ecosystems[cite: 39].</li>
-                        [cite_start]<li>Resolved over 100 bugs in the Data Catalog tool[cite: 43].</li>
-                    </ul>
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">CONSULTANT I</span>
+                    <span class="job-date">Jan 2019 - Sep 2021</span>
                 </div>
-            </section>
-        </div>
+                <div class="company">Hitachi India, Hyderabad</div>
+                <div class="project">Project: Waterlinedata - Data Catalog</div>
+                <div class="tech">Java, Spring Boot, Microservices, Angular 4, AWS, Oracle, Hadoop, Spark</div>
+                <p class="desc">Developed a Data Catalog tool to help Data Science Engineers find and tag data in Hadoop Data Lakes.</p>
+                <ul>
+                    <li>Built Lineage functionality APIs to identify data relations.</li>
+                    <li>Developed common application utilities in Java.</li>
+                    <li>Resolved over 100 system bugs.</li>
+                </ul>
+            </div>
 
-        <div class="side-col">
-            <section>
-                <h2>Technical Skills</h2>
-                <div>
-                    <span class="skill-pill">Java</span><span class="skill-pill">Spring Boot</span>
-                    <span class="skill-pill">Microservices</span><span class="skill-pill">REST API</span>
-                    <span class="skill-pill">Angular</span><span class="skill-pill">AWS</span>
-                    <span class="skill-pill">Kafka</span><span class="skill-pill">Hadoop</span>
-                    <span class="skill-pill">Oracle</span><span class="skill-pill">Spark</span>
-                    [cite_start]<span class="skill-pill">Git</span> [cite: 80]
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">ANALYST SOFTWARE DEVELOPER</span>
+                    <span class="job-date">Apr 2016 - Dec 2018</span>
                 </div>
-            </section>
+                <div class="company">Verizon Data Services India, Hyderabad</div>
+                <div class="project">Projects: CMW Redesign, Appointments, Resource Central</div>
+                <div class="tech">Java, Spring Boot, Microservices, Angular 2</div>
+                <ul>
+                    <li>Redesigned applications using Angular 2 and Microservices.</li>
+                    <li>Developed dashboards for store managers to manage footprints and appointments.</li>
+                    <li>Created common Angular utilities including custom directives and pipes.</li>
+                </ul>
+            </div>
 
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">SOFTWARE DEVELOPER</span>
+                    <span class="job-date">Apr 2014 - Apr 2016</span>
+                </div>
+                <div class="company">Cultuzz, Visakhapatnam</div>
+                <div class="project">Projects: Google Hotel Finder, Ebay API, Channel Integration</div>
+                <div class="tech">Java, Threads, JSP, Spring, JQuery, JavaScript</div>
+                <ul>
+                    <li>Integrated hotel room availability and pricing across web channels.</li>
+                    <li>Implemented queuing for seamless booking without overbooking.</li>
+                    <li>Improved code quality through grouping logic and utility classes.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <span class="skill-badge">Java</span><span class="skill-badge">Spring Boot</span>
+                <span class="skill-badge">REST API</span><span class="skill-badge">Microservices</span>
+                <span class="skill-badge">AWS</span><span class="skill-badge">Kafka</span>
+                <span class="skill-badge">Angular</span><span class="skill-badge">Hadoop</span>
+                <span class="skill-badge">Spark</span><span class="skill-badge">Oracle</span>
+                <span class="skill-badge">Hibernate</span><span class="skill-badge">Git</span>
+            </div>
+        </section>
+
+        <div class="footer-grid">
             <section>
                 <h2>Education</h2>
-                <div class="sidebar-item">
-                    [cite_start]<strong>B.Tech Computer Science [cite: 72]</strong><br>
-                    [cite_start]<span style="color: var(--secondary-text);">JNTU - Kakinada [cite: 72]</span><br>
-                    [cite_start]<small>Jun 2007 - Jun 2011 [cite: 76]</small>
+                <div class="job-header">
+                    <span class="job-title">B.TECH (Computer Science)</span>
+                    <span class="job-date">2007 - 2011</span>
                 </div>
+                <div class="company">Jntu - Kakinada</div>
             </section>
-
             <section>
-                <h2>Awards</h2>
-                <ul style="padding-left: 0; list-style: none;">
-                    [cite_start]<li style="color: var(--primary-text);">🏆 AWS Cloud Practitioner [cite: 83]</li>
-                    [cite_start]<li style="color: var(--primary-text);">💰 Performance Awards: Cognizant, Verizon, Hitachi [cite: 86]</li>
+                <h2>Awards & Languages</h2>
+                <ul>
+                    <li>AWS Cloud Practitioner Certified</li>
+                    <li>Awards at Cognizant, Verizon, and Hitachi</li>
+                    <li>English, Hindi, Telugu</li>
                 </ul>
             </section>
-
-            <section>
-                <h2>Highlights</h2>
-                <div style="color: var(--secondary-text); font-size: 0.9rem;">
-                    [cite_start]Developed Android app with <strong>50k+ downloads</strong> on Playstore[cite: 88].
-                </div>
-            </section>
-
-            <section>
-                <h2>Languages</h2>
-                <div style="color: var(--secondary-text);">
-                    [cite_start]English, Hindi, Telugu [cite: 81]
-                </div>
-            </section>
         </div>
+        
+        <section>
+            <h2>Hobbies</h2>
+            <p>Developed an Android application published on the Playstore with over 100,000 downloads. <link>http://privatescreen.app/</link></p>
+        </section>
     </div>
 </div>
 
