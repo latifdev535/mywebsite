@@ -6,16 +6,17 @@
     <title>Latif Mohammad Khan - Java Developer</title>
     <style>
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #38bdf8;
-            --text-p: #f1f5f9;
-            --text-s: #94a3b8;
-            --border: #334155;
+            --primary: #ffffff;
+            --secondary: #f8fafc;
+            --accent: #4f46e5; /* Indigo accent */
+            --text-p: #1e293b; /* Dark Slate */
+            --text-s: #475569; /* Muted Blue-Grey */
+            --border: #e2e8f0;
+            --badge-bg: #f1f5f9;
         }
         body {
             font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            background-color: var(--primary);
+            background-color: #f1f5f9;
             color: var(--text-p);
             line-height: 1.6;
             margin: 0;
@@ -24,20 +25,21 @@
         .container {
             max-width: 850px;
             margin: 20px auto;
-            background: var(--secondary);
+            background: var(--primary);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         header {
             padding: 40px;
+            background-color: var(--secondary);
             border-bottom: 1px solid var(--border);
             text-align: center;
         }
-        h1 { margin: 0; font-size: 2.2rem; color: var(--accent); letter-spacing: -0.5px; }
-        .subtitle { font-size: 1.2rem; color: var(--text-s); margin: 5px 0 15px; }
-        .contact { font-size: 0.9rem; color: var(--text-s); }
+        h1 { margin: 0; font-size: 2.2rem; color: var(--text-p); letter-spacing: -1px; font-weight: 800; }
+        .subtitle { font-size: 1.2rem; color: var(--accent); margin: 5px 0 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .contact { font-size: 0.9rem; color: var(--text-s); font-weight: 500; }
         .main { padding: 40px; }
         section { margin-bottom: 35px; }
         h2 { 
@@ -45,30 +47,44 @@
             text-transform: uppercase; 
             letter-spacing: 2px; 
             color: var(--accent); 
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--badge-bg);
             padding-bottom: 8px;
             margin-bottom: 20px;
+            font-weight: 700;
         }
         .job { margin-bottom: 30px; }
         .job-header { display: flex; justify-content: space-between; font-weight: bold; }
         .job-title { color: var(--text-p); font-size: 1.1rem; }
-        .job-date { color: var(--accent); font-size: 0.9rem; }
-        .company { color: var(--text-s); font-style: italic; margin-bottom: 10px; }
-        .project { font-size: 0.95rem; font-weight: 600; color: var(--text-p); margin-top: 10px; }
-        .tech { font-size: 0.85rem; color: var(--accent); margin-bottom: 8px; }
+        .job-date { color: var(--text-s); font-size: 0.9rem; font-weight: 500; }
+        .company { color: var(--accent); font-style: italic; margin-bottom: 10px; font-weight: 500; }
+        .project { font-size: 0.95rem; font-weight: 700; color: var(--text-p); margin-top: 10px; }
+        .tech { font-size: 0.85rem; color: var(--text-s); margin-bottom: 8px; font-family: monospace; background: var(--secondary); padding: 2px 6px; border-radius: 4px; display: inline-block; }
         .desc { font-size: 0.95rem; color: var(--text-s); margin-bottom: 10px; }
         ul { padding-left: 18px; margin: 0; }
         li { margin-bottom: 6px; font-size: 0.95rem; color: var(--text-s); }
         .skills-container { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-badge { 
-            background: var(--primary); 
+            background: var(--badge-bg); 
             border: 1px solid var(--border); 
-            padding: 4px 12px; 
-            border-radius: 4px; 
+            padding: 6px 14px; 
+            border-radius: 6px; 
             font-size: 0.8rem; 
             color: var(--text-p);
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .skill-badge:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { border: none; box-shadow: none; margin: 0; }
+        }
     </style>
 </head>
 <body>
@@ -76,7 +92,7 @@
 <div class="container">
     <header>
         <h1>LATIF MOHAMMAD KHAN</h1>
-        <div class="subtitle">Java Developer</div>
+        <div class="subtitle">Senior Java Developer</div>
         <div class="contact">
             GLASGOW, UNITED KINGDOM • +44-7443185442 • LATIFKHAN535@GMAIL.COM
         </div>
@@ -204,7 +220,7 @@
         </div>
         
         <section>
-            <h2>Hobbies</h2>
+            <h2>Hobbies & Projects</h2>
             <p>Developed an Android application published on the Playstore <a href="https://privatescreen.app/">Private Screen Android</a> with over 100,000 downloads.</p>
             <p>Developed IOT face recognition Camera using Raspberry pi.</p>
         </section>
