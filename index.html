@@ -1,200 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latif Mohammad Khan - Java Developer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    
-    <style>
-        :root {
-            --sidebar-bg: #2c3e50;
-            --accent-blue: #3498db;
-        }
-        body { background-color: #f4f7f6; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-        
-        /* Fixed sizing for clean PDF export */
-        .resume-page {
-            width: 850px;
-            margin: 30px auto;
-            background: white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            min-height: 1100px;
-        }
-
-        .sidebar { 
-            background-color: var(--sidebar-bg); 
-            color: white; 
-            padding: 40px 25px;
-            /* Ensures background color fills the PDF height */
-            min-height: 1100px; 
-        }
-
-        .main-content { padding: 40px; }
-        
-        .section-title { 
-            border-bottom: 2px solid var(--accent-blue); 
-            padding-bottom: 5px; 
-            margin-bottom: 18px; 
-            color: var(--sidebar-bg);
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .job-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .tech-text { color: var(--accent-blue); font-weight: 600; font-size: 0.85rem; }
-        
-        .skill-tag { 
-            background: rgba(255,255,255,0.1); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            border-radius: 4px; 
-            padding: 2px 8px; 
-            margin: 2px; 
-            display: inline-block; 
-            font-size: 0.75rem; 
-        }
-
-        .contact-link { color: #bdc3c7; text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
-        .contact-link:hover { color: white; }
-
-        /* Floating Button Style */
-        #pdf-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 999;
-            border-radius: 50px;
-            padding: 12px 24px;
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-
-        @media print { .no-print { display: none !important; } }
-    </style>
-</head>
-<body>
-
-<button id="pdf-btn" class="btn btn-primary no-print" onclick="downloadResume()">
-    <i class="bi bi-file-earmark-pdf-fill me-2"></i> Download Resume
-</button>
-
-<div id="resume-wrapper" class="resume-page">
-    <div class="row g-0">
-        <div class="col-4 sidebar">
-            <h1 class="h3 fw-bold mb-1 text-white">Latif Mohammad Khan</h1> [cite: 2]
-            <p class="mb-4" style="color: var(--accent-blue);">Java Developer</p> [cite: 3]
-            
-            <div class="mb-5">
-                <div class="mb-2"><a href="mailto:latif.khan@jpmchase.com" class="contact-link"><i class="bi bi-envelope me-2"></i>latif.khan@jpmchase.com</a></div> 
-                <div class="mb-2"><a href="tel:+447443185442" class="contact-link"><i class="bi bi-telephone me-2"></i>+44 7443185442</a></div> 
-                <div class="mb-2 text-white-50 small"><i class="bi bi-geo-alt me-2"></i>Glasgow, UK</div> 
-                <div class="mb-2"><a href="https://linkedin.com/in/yourprofile" class="contact-link"><i class="bi bi-linkedin me-2"></i>LinkedIn Profile</a></div>
-                <div class="mb-2"><a href="https://github.com/yourusername" class="contact-link"><i class="bi bi-github me-2"></i>GitHub Portfolio</a></div>
-            </div>
-
-            <h2 class="h6 fw-bold text-uppercase mb-3" style="letter-spacing: 1px;">Expertise</h2>
-            <div class="mb-5">
-                <span class="skill-tag">Java</span> <span class="skill-tag">Spring Boot</span> [cite: 7]
-                <span class="skill-tag">Microservices</span> <span class="skill-tag">REST API</span> [cite: 7]
-                <span class="skill-tag">AWS</span> <span class="skill-tag">Kafka</span> [cite: 7]
-                <span class="skill-tag">Hadoop</span> <span class="skill-tag">Spark</span> [cite: 7]
-                <span class="skill-tag">Angular</span> <span class="skill-tag">Git</span> [cite: 7]
-            </div>
-
-            <h2 class="h6 fw-bold text-uppercase mb-3" style="letter-spacing: 1px;">Certification</h2>
-            <p class="small text-white-50">AWS Cloud Practitioner Certified</p> [cite: 7]
-            
-            <h2 class="h6 fw-bold text-uppercase mb-3 mt-5" style="letter-spacing: 1px;">Languages</h2>
-            <p class="small text-white-50">English, Hindi, Telugu</p> [cite: 7]
-        </div>
-
-        <div class="col-8 main-content">
-            <section class="mb-4">
-                <h2 class="section-title">Summary</h2>
-                <p class="text-muted small" style="text-align: justify;">
-                    Meticulous Software Engineer with 9+ years of experience in delivering innovative business solutions. [cite: 5] 
-                    Proven track record in fast-paced environments, focusing on core backend architecture and automation. [cite: 6]
-                </p>
-            </section>
-
-            <section class="mb-4">
-                <h2 class="section-title">Professional Experience</h2>
-
-                <div class="mb-4">
-                    <div class="job-header">
-                        <h3 class="h6 fw-bold mb-0">Software Engineer II</h3> [cite: 7]
-                        <span class="text-muted" style="font-size: 0.75rem;">Oct 2022 - Present</span> [cite: 7]
-                    </div>
-                    <div class="fw-semibold text-dark small">JPMorgan Chase, Glasgow</div> [cite: 7]
-                    <div class="tech-text mb-2">Java, Spring Boot, Kafka, Python, Playwright</div> [cite: 7]
-                    <ul class="text-muted small ps-3">
-                        <li>Developed core grouping logic for the AMS Colt Integration system. [cite: 7]</li>
-                        <li>Built release management tools in Python and automated test suites. [cite: 7]</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <div class="job-header">
-                        <h3 class="h6 fw-bold mb-0">Senior Software Engineer</h3> [cite: 7]
-                        <span class="text-muted" style="font-size: 0.75rem;">Oct 2021 - Oct 2022</span> [cite: 7]
-                    </div>
-                    <div class="fw-semibold text-dark small">Cognizant, Hyderabad</div> [cite: 7]
-                    <div class="tech-text mb-2">Java / J2EE, Spring Boot, Pega, Sonar</div> [cite: 7]
-                    <ul class="text-muted small ps-3">
-                        <li>Spearheaded API development for credit limit modification services. [cite: 7]</li>
-                        <li>Scoped requirements directly from business users to ensure quality delivery. [cite: 7]</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <div class="job-header">
-                        <h3 class="h6 fw-bold mb-0">Consultant I</h3> [cite: 7]
-                        <span class="text-muted" style="font-size: 0.75rem;">Jan 2019 - Sep 2021</span> [cite: 7]
-                    </div>
-                    <div class="fw-semibold text-dark small">Hitachi India, Hyderabad</div> [cite: 7]
-                    <div class="tech-text mb-2">Java, Microservices, AWS, Hadoop, Spark</div> [cite: 7]
-                    <ul class="text-muted small ps-3">
-                        <li>Engineered Lineage functionality APIs for the Waterlinedata Catalog tool. [cite: 7]</li>
-                        <li>Resolved over 100+ critical bugs to stabilize the Hadoop ecosystem tools. [cite: 7]</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title">Education & Milestones</h2>
-                <div class="d-flex justify-content-between mb-2">
-                    <span class="small fw-bold">B.Tech in Computer Science</span> [cite: 7]
-                    <span class="text-muted small">2007 - 2011</span> [cite: 7]
-                </div>
-                <p class="text-muted small mb-3">JNTU - Kakinada, AP</p> [cite: 7]
-                <div class="p-3 bg-light rounded-2 border-start border-primary border-4">
-                    <p class="small mb-1">🏆 <strong>Awards:</strong> Cash prizes from Cognizant, Verizon, and Hitachi for technical excellence. [cite: 7]</p>
-                    <p class="small mb-0">📱 <strong>Side Project:</strong> Published Android app with 50,000+ downloads. [cite: 7]</p>
-                </div>
-            </section>
-        </div>
-    </div>
+<div class="WordSection1">
+    <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center; line-height:107%;">GLASGOW, UNITED KINGDOM &bull; LATIF.KHAN@JPMCHASE.COM &bull;</p>
+    <p class="MsoNormal" align="center" style="margin-top:0in;margin-right:.1pt; margin-bottom:15.4pt;margin-left:.5pt;text-align:center;line-height:107%;">+44-7443185442</p>
+    <h1>LATIF MOHAMMAD KHAN</h1>
+    <p class="MsoNormal" align="center" style="margin-top:0in;margin-right:.15pt; margin-bottom:11.65pt;margin-left:0in;text-align:center;text-indent:0in; line-height:107%;"><em>Java Developer</em></p>
+    <h2>PROFESSIONAL SUMMARY</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:8.35pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="3" id="Group1930" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image" name="Group 1930"></span></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:12.45pt; margin-left:.5pt;">Meticulous Software Engineer having 9+ years of experience. In-depth understanding of web technologies with focus on delivering innovative business solutions. Excels in fast-paced, high-energy and deadline-driven environment with willingness to take on additional tasks.</p>
+    <h2>EMPLOYMENT HISTORY</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:5.35pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="3" id="Group1931" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image" name="Group 1931"></span></p>
+    <p class="MsoNormal" style="margin:0in;text-indent:0in;">SOFTWARE ENGINEER II&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Oct 2022 - Present</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:-.7pt;margin-bottom:1.15pt; margin-left:-.75pt;text-indent:0in;line-height:107%;"><em>JPMorgan Chase&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Glasgow</em></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Title: AMS Colt Integration</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Technologies : Java, Spring Boot,Kafka</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Transition Manager in COLT System when submits a request for the client onboarding activity the request should propagate to AMS. AMS being account onboarding/maintenance platform should consume the message and acknowledge back to the COLT with respective Job-ID.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Responsibilities :</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:215.95pt;margin-bottom: .3pt;margin-left:11.75pt;"><img width="5" height="84" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAABUAQMAAABwc2/0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABJJREFUGNNjQAc/sMIBVsXAAAD96yqhShdxPAAAAABJRU5ErkJggg==" alt="image" style="float: left; ">Responsible for writing grouping logic (core functionality) Responsible for writing API in downstream application.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:.4pt; margin-left:11.75pt;">Worked on enhancements of AMS and other components.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:.4pt; margin-left:11.75pt;">Worked on Playwrite for automation of testcases</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:0in; margin-left:11.75pt;"><br></p>
+    <table cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td height="0" style="width: 56px;"><br></td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td><img width="682" height="3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image"></td>
+            </tr>
+        </tbody>
+    </table><br>Created a release management tool in python<table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="682" style="width:511.6pt;border-collapse:collapse;">
+        <tbody>
+            <tr style="height:11.2pt;">
+                <td valign="top" style="width: 545px; padding: 0in; height: 11.2pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;">SENIOR SOFTWARE ENGINEER</p>
+                </td>
+                <td valign="top" style="width: 137px; padding: 0in; height: 11.2pt;">
+                    <p class="MsoNormal" align="right" style="margin:0in;text-align:right;text-indent: 0in;line-height:107%;">Oct 2021 - Oct 2022</p>
+                </td>
+            </tr>
+            <tr style="height:26.25pt;">
+                <td valign="top" style="width: 545px; padding: 0in; height: 26.25pt;">
+                    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.15pt; margin-left:0in;text-indent:0in;line-height:107%;"><em>Cognizant</em></p>
+                    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:0in; margin-left:12.0pt;text-indent:0in;line-height:107%;">Title: Underwriting Channel</p>
+                </td>
+                <td valign="top" style="width: 137px; padding: 0in; height: 26.25pt;">
+                    <p class="MsoNormal" style="margin:0in;text-align:justify;text-justify:inter-ideograph; text-indent:0in;line-height:107%;"><em>Hyderabad, Telangana</em></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Technologies: Java / J2EE &ndash; Rest Services, Spring Boot, Pega.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Underwriting Channel is a Java, Spring-boot based application which helps various agents in Bank to modify the credit limit of the customers.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Responsibilities: Java Developer</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Working from past 1 month and responsible for writing the APIs.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Maintained quality of code by adapting various tollgates like Sonar.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:0in; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Responsible for gathering requirements from Business users and scoping them.</p>
+    <table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="682" style="width:511.6pt;border-collapse:collapse;">
+        <tbody>
+            <tr style="height:11.2pt;">
+                <td valign="top" style="width: 545px; padding: 0in; height: 11.2pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;">CONSULTANT I</p>
+                </td>
+                <td valign="top" style="width: 137px; padding: 0in; height: 11.2pt;">
+                    <p class="MsoNormal" align="right" style="margin:0in;text-align:right;text-indent: 0in;line-height:107%;">Jan 2019 - Sep 2021</p>
+                </td>
+            </tr>
+            <tr style="height:11.25pt;">
+                <td valign="top" style="width: 545px; padding: 0in; height: 11.25pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;"><em>Hitachi India</em></p>
+                </td>
+                <td valign="top" style="width: 137px; padding: 0in; height: 11.25pt;">
+                    <p class="MsoNormal" style="margin:0in;text-align:justify;text-justify:inter-ideograph; text-indent:0in;line-height:107%;"><em>Hyderabad, Telangana</em></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Title: Waterlinedata &ndash; Data Catalog (for Data Science Engineers)</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Technologies: Java, Spring Boot, Micro services, Angular 4, AWS, Oracle, Hadoop, Spark</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Description: This application is Data Catalog tool devised to support Data Science Engineers to find the meaningful data in the Data Lakes.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>This tool helps to identify the data within the Hadoop eco system and Tags with meaningful info.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Lineage functionality finds the relation between the data in Data Lake/ Hadoop eco system.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Responsibilities:</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Responsible for Lineage functionality API.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Developed common utilities for the application in Java.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:7.55pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Resolved 100+ bugs in the tool.</p>
+    <p class="MsoNormal" style="margin:0in;text-indent:0in;">ANALYST SOFTWARE DEVELOPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apr 2016 - Dec 2018</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:-.7pt;margin-bottom:1.15pt; margin-left:-.75pt;text-indent:0in;line-height:107%;"><em>Verizon Data Services India&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyderabad, Telangana</em></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Title: CMW Redesign/Appointments/Resource Central</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Technologies: Java, Spring Boot, Micro services, Angular 2</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Description: CMW (Cash Management Workbook): is a system designed for managing the cash in the Verizon stores. Every morning the cash manager logs in the Application to check the amount is available in the store, terminal wise, It also has the details of the representative who manages the terminals.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Resource central: This tool calculates the footprint of the stores nearby and predicts the future footprint for a store, so that the store manager can manage the representatives based on the footprint.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Appointments is another application used in the stores to identify the number of appointments available for the store manager per week, and he can cancel the appointments based on his convenience.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Roles &amp; Responsibilities:</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Roles:</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Angular 2 and Micro services developer for redesigning the applications.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Responsibilities:</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Understanding the business requirements and developing the application using angular 2 and micro services.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Developed various components for the application are like Dashboard which contains appointments information for thestore Managers.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:7.55pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Developed common utilities (directives and pipes) for the application in angular.</p>
+    <p class="MsoNormal" style="margin:0in;text-indent:0in;">SOFTWARE DEVELOPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apr 2014 - Apr 2016</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:-.7pt;margin-bottom:1.15pt; margin-left:-.75pt;text-indent:0in;line-height:107%;"><em>Cultuzz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visakhapatnam, Andhra Pradesh</em></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Title: Google Hotel Finder/Ebay API/Channel Integration</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Technologies: Java, Threads, JSP, Spring, JQuery, JavaScript.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Description: Google hotel finder is a new product developed to compare the hotel room availability and price that are found across the web. This makes the hotel owner to list down the hotel rooms in the Google search engine itself.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Ebay API is a platform used to sell out products in the Ebay, we have integrated the hotel room availability in the Ebay channel.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:29.95pt;margin-bottom: 1.7pt;margin-left:11.75pt;">Channel Integration, In this product we maintain the availability of the hotel rooms available in multiple channels like Trivago/Booking.com Responsibilities:</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Responsible implementing the queue in the application for seamless booking of rooms without making overbooking.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Implements the Grouping logic.</p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:12.4pt; margin-left:17.0pt;text-indent:-5.75pt;"><span style="line-height:108%;">&bull;</span>Implemented utility class for improving the code quality.</p>
+    <h2>EDUCATION</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:5.35pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="3" id="Group2274" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image" name="Group 2274"></span></p>
+    <table class="TableGrid" border="0" cellspacing="0" cellpadding="0" width="682" style="width:511.6pt;border-collapse:collapse;">
+        <tbody>
+            <tr style="height:11.2pt;">
+                <td valign="top" style="width: 559px; padding: 0in; height: 11.2pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;">BACHELOR OF COMPUTER SCIENCE (B.TECH)</p>
+                </td>
+                <td valign="top" style="width: 123px; padding: 0in; height: 11.2pt;">
+                    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:0in; margin-left:5.8pt;text-indent:0in;line-height:107%;">Jun 2007 - Jun 2011</p>
+                </td>
+            </tr>
+            <tr style="height:15.8pt;">
+                <td valign="top" style="width: 559px; padding: 0in; height: 15.8pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;"><em>Jntu - Kakinada</em></p>
+                </td>
+                <td valign="top" style="width: 123px; padding: 0in; height: 15.8pt;">
+                    <p class="MsoNormal" align="right" style="margin-top:0in;margin-right:.1pt; margin-bottom:0in;margin-left:0in;text-align:right;text-indent:0in; line-height:107%;"><em>AP</em></p>
+                </td>
+            </tr>
+            <tr style="height:15.7pt;">
+                <td valign="top" style="width: 559px; padding: 0in; height: 15.7pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;">MATHEMATICS, PHYSICS AND CHEMISTRY</p>
+                </td>
+                <td valign="top" style="width: 123px; padding: 0in; height: 15.7pt;">
+                    <p class="MsoNormal" style="margin:0in;text-align:justify;text-justify:inter-ideograph; text-indent:0in;line-height:107%;">May 2005 - Apr 2007</p>
+                </td>
+            </tr>
+            <tr style="height:11.25pt;">
+                <td valign="top" style="width: 559px; padding: 0in; height: 11.25pt;">
+                    <p class="MsoNormal" style="margin:0in;text-indent:0in;line-height:107%;"><em>Narayana College</em></p>
+                </td>
+                <td valign="top" style="width: 123px; padding: 0in; height: 11.25pt;">
+                    <p class="MsoNormal" align="right" style="margin-top:0in;margin-right:.1pt; margin-bottom:0in;margin-left:0in;text-align:right;text-indent:0in; line-height:107%;"><em>Vizag, AP</em></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>SKILLS</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:6.1pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="3" id="Group2275" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image" name="Group 2275"></span></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:8.6pt; margin-left:.5pt;line-height:137%;">Java, Spring, Spring Boot, REST API, JPA, Hibernate, XML, JSON, Microservices, Angular, AWS, Agile, Git, Hadoop, Spark, Android, Pega, Oracle, JavaScript, jQuery.</p>
+    <h2>LANGUAGES</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:6.1pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="3" id="Group2276" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image" name="Group 2276"></span></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:12.4pt; margin-left:.5pt;">English, Hindi, Telugu.</p>
+    <h2>ADDITIONAL INFORMATION</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:14.8pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="62" src="data:image/png;base64,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" alt="image"></span></p>
+    <h2>HOBBIES</h2>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:8.35pt; margin-left:0in;text-indent:0in;line-height:107%;"><span style="font-size:11.0pt; line-height:107%;color:black;"><img width="682" height="3" id="Group2278" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqoAAAADAQMAAABhx78mAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURRcXFwAAAKS6r1gAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABRJREFUKM9joBH4TwtwgCZOZWAAAJkLVWxN04jkAAAAAElFTkSuQmCC" alt="image" name="Group 2278"></span></p>
+    <p class="MsoNormal" style="margin-top:0in;margin-right:0in;margin-bottom:1.7pt; margin-left:11.75pt;">Developed Android application and published in Playstore (100k+ downloads https://privatescreen.app/)</p>
 </div>
-
-<script>
-    function downloadResume() {
-        const element = document.getElementById('resume-wrapper');
-        const opt = {
-            margin:       0,
-            filename:     'Latif_Khan_Java_Developer.pdf',
-            image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { 
-                scale: 2, 
-                useCORS: true, 
-                letterRendering: true,
-                scrollY: 0 
-            },
-            jsPDF:        { unit: 'px', format: [850, 1100], orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(element).save();
-    }
-</script>
-
-</body>
-</html>
+<p style="bottom: 10px; right: 10px; position: absolute;"><a href="https://wordtohtml.net/?utm_source=wth_free_doc_conversion_link&utm_medium=external" target="_blank" style="font-size:11px; color: #d0d0d0;">Converted to HTML with WordToHTML.net</a><span style="font-size:11px; color: #d0d0d0;">&nbsp;|&nbsp;</span><a href="https://documentconverter.pro/?utm_source=wth_free_doc_conversion_link&utm_medium=external" target="_blank" style="font-size:11px; color: #d0d0d0;">Document Converter for Windows</a></p>
